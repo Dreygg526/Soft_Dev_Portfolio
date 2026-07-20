@@ -1,20 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { profile } from "@/content/portfolio";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "#about", id: "about" },
+  { label: "Experience", href: "#experience", id: "experience" },
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Skills", href: "#skills", id: "skills" },
+  { label: "Contact", href: "#contact", id: "contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -23,7 +25,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Initials for the logo mark.
+  // Scrollspy: mark the section currently in the middle of the viewport as
+  // "active" so the nav shows what the visitor is looking at right now.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    links.forEach((l) => {
+      const el = document.getElementById(l.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
   const initials = profile.name
     .split(" ")
     .map((w) => w[0])
@@ -48,21 +67,36 @@ export default function Navbar() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-neon-cyan to-neon-violet font-mono text-xs text-base-900">
             {initials}
           </span>
-          <span className="hidden sm:inline text-ink-100">{profile.name}</span>
+          <span className="hidden text-ink-100 sm:inline">{profile.name}</span>
         </a>
 
-        {/* Desktop links */}
+        {/* Desktop links with a sliding active pill */}
         <ul className="hidden items-center gap-1 md:flex">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="rounded-lg px-3 py-2 text-sm text-ink-300 transition-colors hover:bg-white/5 hover:text-ink-100"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
+          {links.map((l) => {
+            const isActive = active === l.id;
+            return (
+              <li key={l.href} className="relative">
+                <a
+                  href={l.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`relative block rounded-lg px-3 py-2 text-sm transition-colors ${
+                    isActive
+                      ? "text-neon-cyan"
+                      : "text-ink-300 hover:text-ink-100"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 -z-10 rounded-lg bg-white/[0.08] shadow-[0_0_20px_-6px_rgba(34,211,238,0.6)]"
+                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  {l.label}
+                </a>
+              </li>
+            );
+          })}
           <li>
             <a
               href="#contact"
@@ -85,21 +119,29 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — active section gets a neon left-border + highlight */}
       {open && (
         <div className="section-pad mx-auto mt-2 max-w-7xl md:hidden">
           <ul className="glass-strong flex flex-col gap-1 rounded-2xl p-3">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-lg px-4 py-3 text-sm text-ink-300 hover:bg-white/5 hover:text-ink-100"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
+            {links.map((l) => {
+              const isActive = active === l.id;
+              return (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`block rounded-lg border-l-2 px-4 py-3 text-sm transition-colors ${
+                      isActive
+                        ? "border-neon-cyan bg-white/[0.06] text-neon-cyan"
+                        : "border-transparent text-ink-300 hover:bg-white/5 hover:text-ink-100"
+                    }`}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

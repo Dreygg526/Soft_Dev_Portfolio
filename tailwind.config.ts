@@ -52,10 +52,20 @@ const config: Config = {
         shimmer: {
           "100%": { transform: "translateX(100%)" },
         },
+        drift: {
+          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+          "50%": { transform: "translate(40px, -30px) scale(1.12)" },
+        },
+        drift2: {
+          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+          "50%": { transform: "translate(-50px, 40px) scale(1.18)" },
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
         "spin-slow": "spin-slow 24s linear infinite",
+        drift: "drift 20s ease-in-out infinite",
+        "drift-slow": "drift2 28s ease-in-out infinite",
       },
     },
   },

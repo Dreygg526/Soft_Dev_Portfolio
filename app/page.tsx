@@ -1,4 +1,6 @@
 import WelcomeGate from "@/components/WelcomeGate";
+import SiteBackground from "@/components/SiteBackground";
+import ScrollProgress from "@/components/ScrollProgress";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -12,7 +14,9 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="relative">
+      <SiteBackground />
       <WelcomeGate />
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <About />
