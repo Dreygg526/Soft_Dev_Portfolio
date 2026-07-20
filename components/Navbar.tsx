@@ -37,7 +37,7 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`section-pad mx-auto flex max-w-6xl items-center justify-between rounded-2xl transition-all duration-300 ${
+        className={`section-pad mx-auto flex max-w-7xl items-center justify-between rounded-2xl transition-all duration-300 ${
           scrolled ? "glass-strong py-2.5 shadow-card" : "py-2"
         }`}
       >
@@ -87,7 +87,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="section-pad mx-auto mt-2 max-w-6xl md:hidden">
+        <div className="section-pad mx-auto mt-2 max-w-7xl md:hidden">
           <ul className="glass-strong flex flex-col gap-1 rounded-2xl p-3">
             {links.map((l) => (
               <li key={l.href}>

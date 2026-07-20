@@ -1,19 +1,13 @@
-import { Mail, Github, Linkedin, Facebook, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Phone, MapPin } from "lucide-react";
 import Reveal from "./Reveal";
+import { logoFor } from "./BrandLogos";
 import { profile, socials } from "@/content/portfolio";
-
-const iconFor = (label: string) => {
-  if (label === "GitHub") return Github;
-  if (label === "LinkedIn") return Linkedin;
-  if (label === "Facebook") return Facebook;
-  return Mail;
-};
 
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-pad mx-auto w-full max-w-6xl scroll-mt-24 py-20 sm:py-28"
+      className="section-pad mx-auto w-full max-w-7xl scroll-mt-24 py-20 sm:py-28"
     >
       <Reveal>
         <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-base-700 to-base-800 p-8 text-center sm:p-14">
@@ -33,36 +27,49 @@ export default function Contact() {
               fastest way to reach me is email — I usually reply within a day.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href={`mailto:${profile.email}`}
-                className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-blue px-6 py-3.5 text-sm font-semibold text-base-900 shadow-glow transition-transform hover:scale-[1.03]"
-              >
-                <Mail size={17} />
-                {profile.email}
-                <ArrowUpRight
-                  size={15}
-                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-            </div>
-
-            <div className="mt-6 flex items-center justify-center gap-3">
+            {/* Contact links — each paired with its brand logo + handle */}
+            <div className="mx-auto mt-9 grid max-w-2xl gap-3 sm:grid-cols-2">
               {socials.map((s) => {
-                const Icon = iconFor(s.label);
+                const Logo = logoFor(s.label);
+                const external = s.href.startsWith("http");
                 return (
                   <a
                     key={s.label}
                     href={s.href}
-                    target={s.href.startsWith("http") ? "_blank" : undefined}
+                    target={external ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl glass text-ink-300 transition-all hover:text-neon-cyan hover:shadow-glow"
+                    className="group flex items-center gap-3.5 rounded-2xl glass px-5 py-4 text-left transition-all hover:border-neon-cyan/30 hover:bg-white/[0.06]"
                   >
-                    <Icon size={18} />
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-ink-100 transition-colors group-hover:text-neon-cyan">
+                      <Logo size={20} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-semibold text-ink-100">
+                        {s.label}
+                      </span>
+                      <span className="block truncate font-mono text-xs text-ink-500">
+                        {s.handle}
+                      </span>
+                    </span>
+                    <ArrowUpRight
+                      size={16}
+                      className="shrink-0 text-ink-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neon-cyan"
+                    />
                   </a>
                 );
               })}
+            </div>
+
+            {/* Phone + location */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 font-mono text-sm text-ink-500">
+              <span className="inline-flex items-center gap-2">
+                <Phone size={14} className="text-neon-cyan" />
+                <span className="text-ink-300">{profile.phone}</span>
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <MapPin size={14} className="text-neon-cyan" />
+                {profile.location}
+              </span>
             </div>
           </div>
         </div>

@@ -1,16 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Facebook, Github, Linkedin, Mail, MousePointer2 } from "lucide-react";
+import { ArrowDown, Download, MousePointer2 } from "lucide-react";
 import HeroCanvas from "./HeroCanvas";
+import { logoFor } from "./BrandLogos";
 import { profile, socials } from "@/content/portfolio";
-
-const iconFor = (label: string) => {
-  if (label === "GitHub") return Github;
-  if (label === "LinkedIn") return Linkedin;
-  if (label === "Facebook") return Facebook;
-  return Mail;
-};
 
 export default function Hero() {
   return (
@@ -27,7 +21,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="section-pad relative z-10 mx-auto w-full max-w-6xl pt-28 pb-16">
+      <div className="section-pad relative z-10 mx-auto w-full max-w-7xl pt-28 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,7 +83,7 @@ export default function Hero() {
           {/* Socials */}
           <div className="mt-8 flex items-center gap-3">
             {socials.map((s) => {
-              const Icon = iconFor(s.label);
+              const Logo = logoFor(s.label);
               return (
                 <a
                   key={s.label}
@@ -99,7 +93,7 @@ export default function Hero() {
                   aria-label={s.label}
                   className="flex h-11 w-11 items-center justify-center rounded-xl glass text-ink-300 transition-all hover:text-neon-cyan hover:shadow-glow"
                 >
-                  <Icon size={18} />
+                  <Logo size={18} />
                 </a>
               );
             })}

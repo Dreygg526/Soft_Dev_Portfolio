@@ -44,10 +44,11 @@ export const profile = {
    * Leave as-is to show a labeled placeholder until you add the file. */
   headshot: "/images/headshot.png",
 
-  /* 📸 OPTIONAL — RESUME/CV PDF download button
-   * File to add:  /public/Roan-Uson-CV.pdf
-   * Set to ""  (empty) to hide the “Download CV” button. */
-  resumePdf: "/Roan-Uson-CV.pdf",
+  /* 📄 RESUME/CV download button — points to your Technical CV.
+   * File lives at:  /public/Roan-Uson-CV.docx
+   * To swap in a PDF later, drop /public/Roan-Uson-CV.pdf and change this to
+   * "/Roan-Uson-CV.pdf". Set to ""  (empty) to hide the “Download CV” button. */
+  resumePdf: "/Roan-Uson-CV.docx",
 };
 
 /* ---------------------------------------------------------------------------
