@@ -1,10 +1,11 @@
-import { Mail, Github, Linkedin, ArrowUpRight } from "lucide-react";
+import { Mail, Github, Linkedin, Facebook, ArrowUpRight } from "lucide-react";
 import Reveal from "./Reveal";
 import { profile, socials } from "@/content/portfolio";
 
 const iconFor = (label: string) => {
   if (label === "GitHub") return Github;
   if (label === "LinkedIn") return Linkedin;
+  if (label === "Facebook") return Facebook;
   return Mail;
 };
 

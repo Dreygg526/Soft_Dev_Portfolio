@@ -42,7 +42,7 @@ export const profile = {
    * Recommended:  square, at least 600 × 600 px, well-lit, head & shoulders.
    * Used in:      About section portrait.
    * Leave as-is to show a labeled placeholder until you add the file. */
-  headshot: "/images/headshot.jpg",
+  headshot: "/images/headshot.png",
 
   /* 📸 OPTIONAL — RESUME/CV PDF download button
    * File to add:  /public/Roan-Uson-CV.pdf
@@ -61,8 +61,13 @@ export const socials: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/roan-andrei-uson",
+    href: "https://www.linkedin.com/in/roan-andrei-uson",
     handle: "linkedin.com/in/roan-andrei-uson",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/roanandrei.uson",
+    handle: "facebook.com/roanandrei.uson",
   },
   {
     label: "Email",

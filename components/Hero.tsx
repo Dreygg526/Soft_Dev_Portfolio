@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Github, Linkedin, Mail, MousePointer2 } from "lucide-react";
+import { ArrowDown, Download, Facebook, Github, Linkedin, Mail, MousePointer2 } from "lucide-react";
 import HeroCanvas from "./HeroCanvas";
 import { profile, socials } from "@/content/portfolio";
 
 const iconFor = (label: string) => {
   if (label === "GitHub") return Github;
   if (label === "LinkedIn") return Linkedin;
+  if (label === "Facebook") return Facebook;
   return Mail;
 };
 
