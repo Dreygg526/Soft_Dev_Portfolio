@@ -101,10 +101,10 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* "drag me" hint over the 3D object */}
+      {/* interaction hint over the 3D object */}
       <div className="pointer-events-none absolute bottom-8 right-6 z-10 hidden items-center gap-2 font-mono text-xs text-ink-500 lg:flex">
         <MousePointer2 size={14} className="text-neon-cyan" />
-        drag the core to rotate
+        move your cursor — the core sways with you
       </div>
     </section>
   );
