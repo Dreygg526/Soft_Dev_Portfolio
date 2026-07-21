@@ -55,6 +55,23 @@ export default function Navbar() {
         scrolled ? "py-2" : "py-4"
       }`}
     >
+      {/* Top scrim: masks page content that would otherwise peek through the
+          transparent gap above/around the floating nav pill while scrolling. */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-0 top-0 h-[135%] transition-opacity duration-300 ${
+          scrolled ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(5,7,14,0.92) 0%, rgba(5,7,14,0.6) 45%, transparent 100%)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+          maskImage: "linear-gradient(to bottom, #000 55%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, #000 55%, transparent 100%)",
+        }}
+      />
+
       <nav
         className={`section-pad mx-auto flex max-w-7xl items-center justify-between rounded-2xl transition-all duration-300 ${
           scrolled ? "glass-strong py-2.5 shadow-card" : "py-2"

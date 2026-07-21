@@ -5,8 +5,14 @@ Guidance for Claude Code (and any dev) working in this repository.
 ## Project
 
 Personal portfolio for **Roan Andrei D. Uson** — a 3D, interactive, dark/neon
-single-page site. Positioned as a Full-Stack & AI developer with a Computer
-Engineering foundation.
+single-page site. Positioned as a **Software Engineer & Internal Tools
+Developer** with a Computer Engineering foundation (previously framed as
+"Full-Stack & AI Developer" — the role/copy was rebranded but the underlying
+full-stack + AI story is unchanged).
+
+Section order (top → bottom): Hero → **Projects** → Experience → Skills →
+**About** → Credentials → Contact → Footer. Eyebrow numbers and the Navbar
+links follow this order — keep all three in sync if you reorder.
 
 ## Stack
 
@@ -58,13 +64,17 @@ public/Roan-Uson-CV.docx ← CV wired to the "Download CV" button
 - Neon theme uses semantic tokens (`base-*`, `ink-*`, `neon-*`) from the Tailwind
   config. Use tokens, not raw hex, in components.
 - No emojis as icons — use lucide or the SVG brand logos.
+- **Prose copy avoids hyphens/em-dashes** (owner preference). Body paragraphs
+  (About bio, hero blurb) are justified with `text-justify hyphens-none` so words
+  never break with a hyphen, especially on mobile. Keep new copy hyphen-free.
 
 ---
 
 ## 🔒 Internal notes (for future sessions — not user-facing docs)
 
-- **Deployment: intentionally NOT deployed.** The owner asked to hold off on Vercel
-  ("I might change it later"). Do not set up Vercel or push a deploy without asking.
+- **Deployment: LIVE on Vercel** at `https://soft-dev-portfolio.vercel.app`.
+  (The old "hold off on Vercel" note is superseded — the owner has since deployed.)
+  Vercel auto-deploys from `main`, so pushing to GitHub ships to production.
 - **GitHub:** repo is `Dreygg526/Soft_Dev_Portfolio` (public). Owner account: `Dreygg526`.
 - **Dev-server gotcha:** zombie `next` processes have repeatedly stuck on port 3000,
   causing an *unstyled* page (browser hits the dead server; new server silently moves
@@ -81,3 +91,11 @@ public/Roan-Uson-CV.docx ← CV wired to the "Download CV" button
   replaced the old drag-to-orbit). Sway intensity lives in `three/HeroScene.tsx`.
 - **Preview artifact:** a shareable annotated design preview exists on claude.ai —
   regenerate/update it after visual changes if the owner wants an updated look.
+- **Mobile fixes (do not regress):**
+  - `Navbar.tsx` has a masked/blurred **top scrim** behind the floating pill that
+    fades in on scroll — without it, page content peeks through the transparent
+    gap above/around the pill on mobile.
+  - `Contact.tsx` contact-links grid uses `grid-cols-1 sm:grid-cols-2`. The
+    explicit `grid-cols-1` is required: a bare `grid` makes a single *auto* track
+    that grows to the long handles, so `truncate` fails and cards overflow the
+    screen. Keep `grid-cols-1`.

@@ -23,12 +23,13 @@ export default function Contact() {
               Have a project or a role in mind?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-ink-300">
-              I&apos;m open to full-stack and AI-focused opportunities. The
-              fastest way to reach me is email — I usually reply within a day.
+              I&apos;m open to software engineering and internal tools work, plus
+              anything with AI in it. The fastest way to reach me is email, and I
+              usually reply within a day.
             </p>
 
             {/* Contact links — each paired with its brand logo + handle */}
-            <div className="mx-auto mt-9 grid max-w-2xl gap-3 sm:grid-cols-2">
+            <div className="mx-auto mt-9 grid grid-cols-1 max-w-2xl gap-3 sm:grid-cols-2">
               {socials.map((s) => {
                 const Logo = logoFor(s.label);
                 const external = s.href.startsWith("http");
