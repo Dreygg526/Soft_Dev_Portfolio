@@ -6,10 +6,10 @@ import { Menu, X } from "lucide-react";
 import { profile } from "@/content/portfolio";
 
 const links = [
-  { label: "About", href: "#about", id: "about" },
-  { label: "Experience", href: "#experience", id: "experience" },
   { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Experience", href: "#experience", id: "experience" },
   { label: "Skills", href: "#skills", id: "skills" },
+  { label: "About", href: "#about", id: "about" },
   { label: "Contact", href: "#contact", id: "contact" },
 ];
 

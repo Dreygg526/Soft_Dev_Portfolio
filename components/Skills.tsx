@@ -4,7 +4,7 @@ import { skills } from "@/content/portfolio";
 
 export default function Skills() {
   return (
-    <Section id="skills" eyebrow="04 — What I work with" title="Skills & tools">
+    <Section id="skills" eyebrow="03 — What I work with" title="Skills & tools">
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {skills.map((group, i) => (
           <Reveal key={group.category} delay={(i % 3) * 0.08}>

@@ -6,11 +6,11 @@ import { about, profile } from "@/content/portfolio";
 
 export default function About() {
   return (
-    <Section id="about" eyebrow="01 — Who I am" title="About me">
+    <Section id="about" eyebrow="04 — Who I am" title="About me">
       <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_320px] md:gap-14">
         {/* Bio */}
         <Reveal className="order-2 md:order-1">
-          <div className="space-y-5 text-base leading-relaxed text-ink-300 sm:text-lg">
+          <div className="space-y-5 text-base leading-relaxed text-ink-300 text-justify hyphens-none sm:text-lg">
             {about.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}

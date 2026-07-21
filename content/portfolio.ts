@@ -26,13 +26,13 @@ export type SocialLink = {
 export const profile = {
   name: "Roan Andrei D. Uson",
   // Short role shown under your name in the hero. Keep it punchy.
-  role: "Full-Stack & AI Developer",
+  role: "Software Engineer & Internal Tools Developer",
   // One-line tagline in the hero.
   tagline:
-    "Computer Engineer building production web apps with AI baked in.",
+    "Computer Engineer building the internal tools teams run on, with AI built in.",
   // Longer hero sub-paragraph (1–2 sentences).
   heroBlurb:
-    "I design, build, and ship full-stack internal tools end-to-end — Next.js, TypeScript, and Supabase on the front, Claude & Gemini APIs doing the smart part.",
+    "I design and ship internal tools from the ground up, end to end. Next.js, TypeScript, and Supabase on the surface, with the Claude and Gemini APIs handling the parts that need to think.",
   location: "San Pedro, Laguna, Philippines",
   email: "andreiuson526@gmail.com",
   phone: "+63 930 516 1213",
@@ -82,13 +82,13 @@ export const socials: SocialLink[] = [
  * ------------------------------------------------------------------------- */
 export const about = {
   paragraphs: [
-    "I'm a Computer Engineering graduate from the Polytechnic University of the Philippines who likes turning messy, manual workflows into clean software.",
-    "At The Standard Lab I build internal tools from scratch — full-stack apps that a whole team relies on daily — and wire them up to AI so they do more than store data: they think, draft, and analyze.",
-    "My background spans web development, IT support, and computer/network fundamentals, so I'm just as comfortable debugging a production deploy as I am explaining it to a non-technical teammate.",
+    "I'm a Software Engineer and internal tools developer with a Computer Engineering foundation from the Polytechnic University of the Philippines, and I like turning messy, manual workflows into clean software.",
+    "At The Standard Lab I build internal tools from scratch, complete full stack apps that a whole team relies on every day, and I wire them into AI so they do more than store data. They think, draft, and analyze.",
+    "My background spans web development, IT support, and computer and network fundamentals, so I'm just as comfortable debugging a production deploy as I am explaining it to a teammate who isn't technical.",
   ],
   // Quick facts shown as chips next to the bio. Edit freely.
   facts: [
-    "BS Computer Engineering — PUP",
+    "BS Computer Engineering, PUP",
     "Based in Laguna, PH • open to remote",
     "Claude & Gemini API integrations",
   ],
@@ -246,9 +246,9 @@ export const education = {
  * 9) SEO / METADATA  — browser tab + link previews
  * ------------------------------------------------------------------------- */
 export const seo = {
-  title: "Roan Andrei D. Uson — Full-Stack & AI Developer",
+  title: "Roan Andrei D. Uson — Software Engineer & Internal Tools Developer",
   description:
-    "Portfolio of Roan Andrei D. Uson — Computer Engineer and Full-Stack / AI Developer building production web apps with Next.js, TypeScript, Supabase, and the Claude & Gemini APIs.",
+    "Portfolio of Roan Andrei D. Uson, a Software Engineer and internal tools developer with a Computer Engineering foundation, building production web apps with Next.js, TypeScript, Supabase, and the Claude and Gemini APIs.",
   /* 📸 OPTIONAL — SOCIAL SHARE IMAGE (the preview when you paste your link)
    * File to add:  /public/images/og-image.png   at 1200 × 630 px. */
   ogImage: "/images/og-image.png",

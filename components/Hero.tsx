@@ -45,7 +45,7 @@ export default function Hero() {
             {profile.role}
           </p>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-300 sm:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-300 text-justify hyphens-none sm:text-lg">
             {profile.heroBlurb}
           </p>
 

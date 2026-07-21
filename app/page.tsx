@@ -19,10 +19,10 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <Hero />
-      <About />
-      <Experience />
       <Projects />
+      <Experience />
       <Skills />
+      <About />
       <Credentials />
       <Contact />
       <Footer />
