@@ -99,3 +99,10 @@ public/Roan-Uson-CV.docx ← CV wired to the "Download CV" button
     explicit `grid-cols-1` is required: a bare `grid` makes a single *auto* track
     that grows to the long handles, so `truncate` fails and cards overflow the
     screen. Keep `grid-cols-1`.
+  - `WelcomeGate.tsx`: on touch devices a **tap must not dismiss** the gate —
+    only a deliberate swipe up (`onClick` is gated behind `!isTouch`). The body
+    scroll lock is held through the **entire exit animation** and released only
+    in `AnimatePresence` `onExitComplete` (which also `scrollTo(0,0)`); the
+    overlay has `touch-none`. This stops a swipe's momentum from flinging the
+    page down and skipping past the hero. Don't move the unlock back to the
+    `open` state.
