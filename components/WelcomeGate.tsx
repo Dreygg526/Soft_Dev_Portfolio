@@ -30,14 +30,17 @@ export default function WelcomeGate() {
     );
   }, []);
 
-  // Lock body scroll while the gate is open.
+  // Lock body scroll while the gate is present. We deliberately keep it locked
+  // through the whole exit animation and only unlock in AnimatePresence's
+  // onExitComplete (below). If we unlocked the instant the user swipes, the
+  // swipe's leftover momentum would fling the page down and skip past the hero.
   useEffect(() => {
     if (typeof document === "undefined") return;
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, []);
 
   // Keyboard / wheel / click listeners (desktop) while open.
   useEffect(() => {
@@ -68,12 +71,23 @@ export default function WelcomeGate() {
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      onExitComplete={() => {
+        // Now that the gate has fully slid away, land on the hero (not wherever
+        // a fling might have pushed things) and restore normal scrolling.
+        if (typeof window !== "undefined") window.scrollTo(0, 0);
+        if (typeof document !== "undefined") document.body.style.overflow = "";
+      }}
+    >
       {open && (
         <motion.div
           key="welcome"
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-base-900"
-          onClick={proceed}
+          className="fixed inset-0 z-[100] flex touch-none flex-col items-center justify-center overflow-hidden bg-base-900"
+          onClick={() => {
+            // On touch devices a tap must NOT dismiss the gate — only a
+            // deliberate swipe up should. Taps still proceed on desktop.
+            if (!isTouch) proceed();
+          }}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           role="dialog"
